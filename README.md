@@ -27,3 +27,24 @@ Thank you, and enjoy!
 #### DEMO
 ![](demo.gif)
 
+### Second Update (dev branch, Commit d93fac6)
+Adding the merge sort, 
+I still havn't comment the code properly, 
+but I did changed the nasty gray-look of the program.
+
+The jar in the dev branch is yet to be updated, but when I'll merge it(pun intended) to 
+the master I will.
+
+In the next working session I'll be working on coloring with Images in the back, and sounds.
+The hope is that at the end of the week, the project will also contain a gui and all sort of options
+such as inc/decreesing volumn and animation speed, choosing between algorithms and uploading pictures for 
+background sorting. all with window/screen management system.
+
+Hopefully, I'll even bring in different-perspective sorting such as puzzle, and more, but that requires 
+a design change and I'll have some sort of graphical abstract class that handles the drawing types and actually
+draws something on screen.
+
+#### DEMO
+![](demo_2.gif)
+
+
