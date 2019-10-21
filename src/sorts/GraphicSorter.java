@@ -1,6 +1,9 @@
-package sortVisualization;
+package sorts;
 
 import java.awt.Graphics;
+
+import sortVisualization.RandArrayManager;
+import sortVisualization.SortScreen;
 
 public abstract class GraphicSorter {
 

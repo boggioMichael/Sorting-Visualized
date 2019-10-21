@@ -1,13 +1,16 @@
-package sortVisualization;
+package sorts;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import sortVisualization.RandArrayManager;
+import sortVisualization.SortScreen;
 
 public class BubbleSort extends GraphicSorter {
 	
 	private int greenIndex, redIndex;
 	
-	BubbleSort(RandArrayManager arrayManager, SortScreen pointer) {
+	public BubbleSort(RandArrayManager arrayManager, SortScreen pointer) {
 		super(arrayManager, pointer);
 	}
 
@@ -18,7 +21,7 @@ public class BubbleSort extends GraphicSorter {
 		{	
 			boolean swapped = false;
 		
-			for (int j = 0; j < this.arrayManager.getLength() - 1; j++) {
+			for (int j = 0; j < this.arrayManager.getLength() - i - 1; j++) {
 				this.greenIndex = j;
 				this.redIndex = j + 1;
 				
@@ -44,7 +47,7 @@ public class BubbleSort extends GraphicSorter {
 		
 		this.drawPointer.drawArrayElement(greenIndex, g, Color.green);
 		
-		this.drawPointer.drawArrayElement(redIndex, g, Color.black);
+		this.drawPointer.drawArrayElement(redIndex, g, Color.red);
 	}	
 	
 	

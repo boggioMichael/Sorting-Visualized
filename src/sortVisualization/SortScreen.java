@@ -4,12 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
+import sorts.*;
 
 public class SortScreen extends JPanel implements Runnable {
 
@@ -25,15 +22,14 @@ public class SortScreen extends JPanel implements Runnable {
 	private int greenRectLength = 0;
 	//logic and graphics related 
 	
-	public static final int SPACING_WIDTH = 0;
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = SortScreen.WIDTH / 9 * 6;
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 800;
 	//height and width
 	//TO UNDERSTAND WHY THE WIDTH IS CALCULATED LIKE THAT
 	//GO TO 	
 	
 	//timer related
-	private static final int FRAME_DELAY_MS = 3;
+	private static final int FRAME_DELAY_MS = 10;
 	
 	GraphicSorter sorter;
 	
@@ -45,9 +41,9 @@ public class SortScreen extends JPanel implements Runnable {
 		
 		arrayManager = new RandArrayManager();
 		//setting the array manager and generating random array.
-		//for the list of the swaped and random rectangles
+		//for the list of the swapped and random rectangles
 		
-		this.sorter = new BubbleSort(arrayManager, this);
+		this.sorter = new MergeSort(arrayManager, this);
 	}
 	
 	@Override
@@ -71,7 +67,7 @@ public class SortScreen extends JPanel implements Runnable {
 	{	
 		for (int i = 0; i < this.arrayManager.getLength(); i++) {
 			
-			drawArrayElement(i, g, Color.GRAY);
+			drawArrayElement(i, g, Color.WHITE);
 		}
 		
 	}
@@ -87,7 +83,7 @@ public class SortScreen extends JPanel implements Runnable {
 		}
 		
 		for (int i = this.greenRectLength; i < this.arrayManager.getLength(); i++) {			
-			drawArrayElement(i, g, Color.GRAY);
+			drawArrayElement(i, g, Color.WHITE);
 		}
 	}
 
@@ -97,13 +93,11 @@ public class SortScreen extends JPanel implements Runnable {
 		int height = this.arrayManager.rArray[i];
 		int y= SortScreen.HEIGHT - this.arrayManager.rArray[i];
 		
-		int x = SortScreen.SPACING_WIDTH * (i+1) + RandArrayManager.ELEMENT_WIDTH * i;
+		int x = (i+1) + RandArrayManager.ELEMENT_WIDTH * i;
 		
 		
 		g.setColor(c);
 		g.fillRect(x, y, RandArrayManager.ELEMENT_WIDTH, height);
-		g.setColor(Color.white);
-		g.drawRect(x, y, RandArrayManager.ELEMENT_WIDTH, height);
 		
 		return x;
 	}
@@ -121,7 +115,6 @@ public class SortScreen extends JPanel implements Runnable {
 				sorter.sort();
 			}
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -129,7 +122,6 @@ public class SortScreen extends JPanel implements Runnable {
 	
 	public void sleepAndDraw() throws InterruptedException
 	{
-		
 		Thread.sleep(SortScreen.FRAME_DELAY_MS);
 		this.repaint();
 	}
