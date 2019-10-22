@@ -47,4 +47,24 @@ draws something on screen.
 #### DEMO
 ![](demo_2.gif)
 
+### Third Update (dev branch, Commit 2a2d110)
+Today I Changed the Stracture of the program, added
+the pictures addition and managed to create 2 Helper/Singletone classes for
+sound and rendering.
+
+Also I decided to do a class for loading and saving the static image, and 
+also cropping it so that the Renderer class could fit the parts of the picture to the rectangles.
+
+Next time I'll probably work on the GUI aspect of the software, described in the second update section  👆🏻
+
+I hope next time I'll also comment and fix design issues and bugs that makes the program
+run on way to many resources and makes my computer's fan go crazy.
+
+If somebody is reading this right now, feel free to contact me and maybe suggest some design and 
+small things to be fixed.
+
+Thanks!
+
+#### DEMO
+![](demo_3.gif)
 
