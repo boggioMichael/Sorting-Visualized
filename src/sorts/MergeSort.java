@@ -3,6 +3,8 @@ package sorts;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import mediaManagement.Renderer;
+import mediaManagement.SoundHelper;
 import sortVisualization.RandArrayManager;
 import sortVisualization.SortScreen;
 
@@ -19,9 +21,12 @@ public class MergeSort extends GraphicSorter {
 
 	@Override
 	public void sort() throws InterruptedException {
-		int helper[] = this.arrayManager.rArray.clone();
-		int toSort[] = this.arrayManager.rArray.clone();
-		this.sort(helper, 0, this.arrayManager.getLength(), toSort);
+		if(!this.flag)
+		{
+			int helper[] = this.arrayManager.rArray.clone();
+			int toSort[] = this.arrayManager.rArray.clone();
+			this.sort(helper, 0, this.arrayManager.getLength(), toSort);
+		}
 		this.flag = true;
 	}
 
@@ -68,9 +73,19 @@ public class MergeSort extends GraphicSorter {
 	public void paintPointers(Graphics g) {
 		if(this.mergeFirstIndex < RandArrayManager.NO_ELEMENTS &&
 			this.mergeSecondIndex < RandArrayManager.NO_ELEMENTS)
-		{					
-			this.drawPointer.drawArrayElement(this.mergeFirstIndex, g, Color.red);
-			this.drawPointer.drawArrayElement(this.mergeSecondIndex, g, Color.red);
+		{
+			Renderer.drawArrayElement(this.mergeFirstIndex, g, Color.red, this.arrayManager);
+			Renderer.drawArrayElement(this.mergeSecondIndex, g, Color.red, this.arrayManager);
+		}
+	}
+
+	@Override
+	public void makeSound() {
+		if(this.mergeFirstIndex < RandArrayManager.NO_ELEMENTS &&
+				this.mergeSecondIndex < RandArrayManager.NO_ELEMENTS)
+		{
+			SoundHelper.soundManager.makeSound(this.arrayManager.rArray[this.mergeFirstIndex]);
+			SoundHelper.soundManager.makeSound(this.arrayManager.rArray[this.mergeSecondIndex]);
 		}
 	}
 

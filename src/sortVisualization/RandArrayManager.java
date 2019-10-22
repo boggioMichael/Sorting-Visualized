@@ -7,10 +7,12 @@ public class RandArrayManager {
 	public int[] rArray;
 	private Random rnd;
 	
-	public static final int NO_ELEMENTS = 100;
+	public static final int NO_ELEMENTS = SortScreen.WIDTH / 10;
 	public static final int MAX_HEIGHT = SortScreen.HEIGHT - 100;
 	
 	public static final int ELEMENT_WIDTH = SortScreen.WIDTH / NO_ELEMENTS - 1;
+	
+	private static final int ELEMENT_HEIGHT_FACTOR = RandArrayManager.MAX_HEIGHT / RandArrayManager.NO_ELEMENTS;
 	
 	public RandArrayManager()
 	{
@@ -30,7 +32,7 @@ public class RandArrayManager {
 		
 		//every element is increased by the multiple of 3 for the last one to be at the MAX_HEIGHT 
 		for (int i = 0; i < this.rArray.length; i++) {
-			this.rArray[i] = (i + 1) * RandArrayManager.MAX_HEIGHT / RandArrayManager.NO_ELEMENTS;
+			this.rArray[i] = (i + 1) * RandArrayManager.ELEMENT_HEIGHT_FACTOR;
 		}
 		//generate
 		

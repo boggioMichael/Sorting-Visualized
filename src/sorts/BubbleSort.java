@@ -3,6 +3,8 @@ package sorts;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import mediaManagement.Renderer;
+import mediaManagement.SoundHelper;
 import sortVisualization.RandArrayManager;
 import sortVisualization.SortScreen;
 
@@ -45,9 +47,14 @@ public class BubbleSort extends GraphicSorter {
 	@Override
 	public void paintPointers(Graphics g) {
 		
-		this.drawPointer.drawArrayElement(greenIndex, g, Color.green);
+		Renderer.drawArrayElement(greenIndex, g, Color.green, this.arrayManager);
 		
-		this.drawPointer.drawArrayElement(redIndex, g, Color.red);
+		Renderer.drawArrayElement(redIndex, g, Color.red, this.arrayManager);
+	}
+
+	@Override
+	public void makeSound() {
+		SoundHelper.soundManager.makeSound(this.arrayManager.rArray[redIndex]);
 	}	
 	
 	

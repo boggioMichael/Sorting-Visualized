@@ -28,5 +28,6 @@ public abstract class GraphicSorter {
 	
 	public abstract void sort() throws InterruptedException;
 	public abstract void paintPointers(Graphics g);
+	public abstract void makeSound();
 	
 }
